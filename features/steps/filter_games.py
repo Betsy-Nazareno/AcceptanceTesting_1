@@ -37,6 +37,10 @@ def step_impl(context, criteria):
 	elif(criteria == 'rate'):
 		result, message, error = get_game_rating(context.games, context.rate)
 		print("This is the result", result)
+
+	if (criteria == 'study'):
+		result, message = get_game_developer(context.games, context.developer)
+		print(result)
 		context.result = result
 		context.message = message
 
@@ -64,3 +68,8 @@ def step_impl(context, message):
 	print(message)
 	print(context.message)
 	assert context.message == message
+
+
+@given("the user enters a manufacturer: {developer}")
+def step_impl(context, developer):
+	context.developer = developer
